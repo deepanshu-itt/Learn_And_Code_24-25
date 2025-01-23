@@ -1,25 +1,25 @@
-def isArmstrongNumber(userArmstrongNumber):
+def isArmstrongNumber(userInputArmstrongNumber):
     sumOfDigitPowers = 0
     numberOfDigits = 0
-    possibleArmstrongNumber = userArmstrongNumber
+    possibleArmstrongNumber = userInputArmstrongNumber
 
     while possibleArmstrongNumber > 0:
         numberOfDigits += 1
         possibleArmstrongNumber //= 10
 
-    possibleArmstrongNumber = userArmstrongNumber
+    possibleArmstrongNumber =userInputArmstrongNumber
     for _ in range(numberOfDigits):
         lastDigit =possibleArmstrongNumber % 10
         sumOfDigitPowers += lastDigit ** numberOfDigits
         possibleArmstrongNumber //= 10
 
-    return sumOfDigitPowers == userArmstrongNumber
+    return sumOfDigitPowers == userInputArmstrongNumber
 
 
-userArmstrongNumber = int(input("\nPlease Enter the Number to Check for Armstrong: "))
+userInputArmstrongNumber = int(input("\nPlease Enter the Number to Check for Armstrong: "))
 
 
-if isArmstrongNumber(userArmstrongNumber):
-    print("\n%d is an Armstrong Number.\n" % userArmstrongNumber)
+if isArmstrongNumber(userInputArmstrongNumber):
+    print("\n%d is an Armstrong Number.\n" % userInputArmstrongNumber)
 else:
-    print("\n%d is Not an Armstrong Number.\n" % userArmstrongNumber)
+    print("\n%d is Not an Armstrong Number.\n" % userInputArmstrongNumber)

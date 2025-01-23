@@ -8,10 +8,10 @@ def is_valid_input(userGuessNumber):
 
 def main():
     numbeToBeGuess = random.randint(1, 100)  
-    guessed_correctly = False  
+    is_guessed_correctly = False  
     totalUserGuess = 0  
 
-    while not guessed_correctly:
+    while not is_guessed_correctly:
         userGuessNumber = input("Guess a number between 1 and 100: ")  # Prompt user for a guess
 
         if not is_valid_input(userGuessNumber):  
@@ -27,7 +27,7 @@ def main():
             print("Too High. Guess again.")  
         else:
             print("You guessed it in", totalUserGuess, "guesses!")  
-            guessed_correctly = True  
+            is_guessed_correctly = True  
 
 if __name__ == "__main__":
     main()  

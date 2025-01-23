@@ -44,9 +44,9 @@ public class Main {
 
     private static int findCountryIndex(String countryCode) {
         int countryIndex=-1;
-        for (int i = 0; i < countryCodes.length; i++) {
-            if (countryCodes[i].equals(countryCode)) {
-               countryIndex= i; 
+        for (int countryCodeIndex = 0; i < countryCodes.length; i++) {
+            if (countryCodes[countryCodeIndex].equals(countryCode)) {
+               countryIndex= countryCodeIndex; 
             }
         }
         return countryIndex; 
