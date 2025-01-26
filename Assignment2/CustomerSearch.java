@@ -39,8 +39,8 @@ class CustomerSearch
         StringBuilder customerDetailsCsvFormat = new StringBuilder();
 
         foreach (var customer in customersDetails)
-        {
-            customerDetailsCsvFormat.AppendFormat("{0},{1},{2},{3}", customer.CustomerID, customer.CompanyName, customer.ContactName, customer.Country);
+        {   var customerDetailsCsvRow=$"{customer.CustomerID},{customer.CompanyName},{customer.ContactName},{customer.Country}";
+            customerDetailsCsvFormat.AppendFormat(customerDetailsCsvRow);
             customerDetailsCsvFormat.AppendLine();
         }
 
