@@ -1,19 +1,40 @@
 using System;
-using System.Numerics;
+using System.Linq;
+
 class CalculateMeanFromSubarray {
     static void Main(string[] args) {
-       var arraySizeandQueries = Array.ConvertAll(Console.ReadLine().Split(' '), int.Parse);
-            var userInputarray = Array.ConvertAll(Console.ReadLine().Split(' '), long.Parse);
-            long[] subarraySum = new long[arraySizeandQueries[0] + 1];
-            subarraySum[0] = 0;
-            for (int index = 1; index <= arraySizeandQueries[0]; index++)
-            {
-                subarraySum[index] = subarraySum[index - 1] + userInputarray[index - 1];
-            }
-            for (var query = 0; query < arraySizeandQueries[1]; query++)
-            {
-                var rightSubarraySum = Array.ConvertAll(Console.ReadLine().Split(' '), int.
-                Console.WriteLine((long)((long)(subarraySum[rightSubarraySum[1]] - subarraySum[rightSubarraySum[0] - 1]) / (rightSubarraySum[1] - rightSubarraySum[0] + 1)));
-            }
+        var arraySizeandQueries = getUserArrayFromConsole();
+        var userInputArray = getUserArrayLongFromConsole();
+
+        long[] subarraySum = CalculateSubarraySums(userInputArray);
+
+        processUserInputQueries(subarraySum, arraySizeandQueries[1]);
+    }
+
+    static int[] getUserArrayFromConsole() {
+        return Array.ConvertAll(Console.ReadLine().Split(' '), int.Parse);
+    }
+
+    static long[] getUserArrayLongFromConsole() {
+        return Array.ConvertAll(Console.ReadLine().Split(' '), long.Parse);
+    }
+
+
+    static long[] CalculateSubarraySums(long[] userInputArray) {
+        long[] subarraySum = new long[userInputArray.Length + 1];
+        subarraySum[0] = 0;
+        for (int index = 1; index <= userInputArray.Length; index++) {
+            subarraySum[index] = subarraySum[index - 1] + userInputArray[index - 1];
+        }
+        return subarraySum;
+    }
+
+    static void processUserInputQueries(long[] subarraySum, int userInputQueryCount) {
+        for (var query = 0; query < userInputQueryCount; query++) {
+            var rightSubarraySum = getUserArrayFromConsole();
+            var sum = subarraySum[rightSubarraySum[1]] - subarraySum[rightSubarraySum[0] - 1];
+            var mean = (long)(sum / (rightSubarraySum[1] - rightSubarraySum[0]; + 1)); 
+            Console.WriteLine(mean);
+        }
     }
 }
