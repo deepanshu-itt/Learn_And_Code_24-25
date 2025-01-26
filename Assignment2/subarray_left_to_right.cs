@@ -17,7 +17,7 @@ class MeanFromSubarray {
         var arraySizeandQueries = getUserArrayFromConsole();
         var userInputArray = getUserArrayLongFromConsole();
 
-        long[] subarraySum = CalculateSubarraySums(userInputArray);
+        long[] subarraySum = calculateSubarraySums(userInputArray);
 
         processUserInputQueries(subarraySum, arraySizeandQueries[1]);
     }
@@ -31,7 +31,7 @@ class MeanFromSubarray {
     }
 
 
-    static long[] CalculateSubarraySums(long[] userInputArray) {
+    static long[] calculateSubarraySums(long[] userInputArray) {
         long[] subarraySum = new long[userInputArray.Length + 1];
         subarraySum[0] = 0;
         for (int index = 1; index <= userInputArray.Length; index++) {
