@@ -1,8 +1,19 @@
 using System;
-using System.Linq;
+using System.Numerics;
 
-class CalculateMeanFromSubarray {
+class MeanFromSubarray {
     static void Main(string[] args) {
+        try{
+            calculateMeanFromSubarray();
+        }
+
+        catch (Exception error)
+        {
+            Console.WriteLine($"Error occurred: {error.Message}");
+        }
+    }
+
+    static void calculateMeanFromSubarray(){
         var arraySizeandQueries = getUserArrayFromConsole();
         var userInputArray = getUserArrayLongFromConsole();
 
@@ -30,11 +41,23 @@ class CalculateMeanFromSubarray {
     }
 
     static void processUserInputQueries(long[] subarraySum, int userInputQueryCount) {
-        for (var query = 0; query < userInputQueryCount; query++) {
+        for (var query = 0; query < userInputQueryCount; query++){
             var rightSubarraySum = getUserArrayFromConsole();
-            var sum = subarraySum[rightSubarraySum[1]] - subarraySum[rightSubarraySum[0] - 1];
-            var mean = (long)(sum / (rightSubarraySum[1] - rightSubarraySum[0]; + 1)); 
-            Console.WriteLine(mean);
+                handleValidateQuery(rightSubarraySum,subarraySum.Length);
+                var mean = calculateMean(subarraySum,rightSubarraySum);
+                Console.WriteLine(mean);
         }
+    }
+
+    static void handleValidateQuery(long[] rightSubarraySum, long subarraySumLength){
+        if (rightSubarraySum[0] < 1 || rightSubarraySum[1] > subarraySumLength - 1 || rightSubarraySum[0] > rightSubarraySum[1])
+                {
+                    throw new ArgumentException("User Input Query Range is Invalid. Ensure the first index is less than or equal to the second index.");
+                }
+
+    }
+
+    static long calculateMean(long[] subarraySum,long[] rightSubarraySum){
+        return (long)((long)(subarraySum[rightSubarraySum[1]] - subarraySum[rightSubarraySum[0] - 1]) / (rightSubarraySum[1] - rightSubarraySum[0] + 1));
     }
 }
