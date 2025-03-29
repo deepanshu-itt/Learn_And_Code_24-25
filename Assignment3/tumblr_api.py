@@ -3,7 +3,9 @@ import json
 
 
 class TumblrAPI:
-    
+    # api parameters
+    # num:- default value of num is 20 and maximum is 50
+    # start :- default value of post offset is 0.
     @staticmethod
     def create_api_url(blog_name: str, start_index: int, end_index: int) -> str:
         return (
