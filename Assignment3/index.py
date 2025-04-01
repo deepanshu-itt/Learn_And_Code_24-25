@@ -11,8 +11,8 @@ def is_valid_input(start_range: int, end_range: int):
     try:
         if start_range < 1 or end_range < start_range:
             raise ValueError("Invalid range. Start must be >= 1 and end must be >= start.")
-    except ValueError as e:
-        print(f"Invalid range format: {e}")
+    except ValueError as error:
+        print(f"Invalid range format: {error}")
         exit()
 
 

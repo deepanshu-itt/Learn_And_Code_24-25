@@ -19,23 +19,29 @@ class Blog:
         try:
             blog_json_data = TumblrAPI.fetch_data(api_url)
 
+            Blog.process_blog_from_json(blog_json_data, start_range)
 
-            blog = Blog(
+        except RuntimeError as e:
+            print(f"An error occurred: {e}")
+
+
+    @staticmethod
+    def process_blog_from_json(blog_json_data, start_range):
+
+        blog = Blog(
                 title = blog_json_data['tumblelog']['title'],
                 name = blog_json_data['tumblelog']['name'],
                 description = blog_json_data['tumblelog']['description'],
                 total_posts = blog_json_data['posts-total']
             )
 
-            blog.print_blog_details()
+        blog.print_blog_details()
 
-            PostProcessor.process_posts(blog_json_data.get('posts', []), start_range)
-
-        except RuntimeError as e:
-            print(f"An error occurred: {e}")
+        PostProcessor.process_posts(blog_json_data.get('posts', []), start_range)
 
 
     def print_blog_details(self):
+
         print(f"Blog Title: {self.title}")
         print(f"Blog Name: {self.name}")
         print(f"Blog Description: {self.description}")

@@ -20,7 +20,9 @@ class TumblrAPI:
             response = requests.get(api_url)
             json_string = response.text.replace('var tumblr_api_read =', '').strip().strip(';')
             return json.loads(json_string)
-        except requests.exceptions.RequestException as e:
-            raise RuntimeError(f"Error fetching data from Tumblr API: {e}")
-        except json.JSONDecodeError as e:
-            raise RuntimeError(f"Error decoding JSON data: {e}")
+        
+        except requests.exceptions.RequestException as error:
+            raise RuntimeError(f"Error fetching data from Tumblr API: {error}")
+        
+        except json.JSONDecodeError as error:
+            raise RuntimeError(f"Error decoding JSON data: {error}")
